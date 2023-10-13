@@ -68,14 +68,40 @@ class LinkedList {
   getFirst(){
     return this.head
   }
-
-
-
-
-
-
-
-
+  getKth(k){
+    let currentNode =this.head;
+    let count = 1
+    while (currentNode && count !== k){
+      count++
+      currentNode = currentNode.next
+    }
+    return currentNode
+  }
+  getKthToLast(k){
+    let getSize =this.size();
+    let node = this.head;
+    for (let x = 1; x < getSize - k; x++){
+      node = node.next
+    }
+    return node
+  }
+  isEmpty(){
+    return !this.head
+  }
+  toArray(){
+    let arr = []
+    let node = this.head;
+    while (node){
+      arr.push(node.data);
+      node = node.next;
+    }
+    return arr
+  }
+  containsDuplicates(){
+    const arr = this.toArray();
+    const unique = [...new Set(arr)];
+    return arr.length !== unique.length;
+  }
 }
 
 
